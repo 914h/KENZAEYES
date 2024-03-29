@@ -1,6 +1,6 @@
 <?php
 require ("../head.php");
-$r = "SELECT MAX(idp) AS max_id FROM produit";
+$r = "SELECT MAX(idproduit) AS max_id FROM produit";
 require ("../connexion.php");
 $res = mysqli_query($con, $r);
 $data = mysqli_fetch_assoc($res);
@@ -14,8 +14,8 @@ mysqli_close($con);
         <fieldset>
             <legend>Formulaire Produit</legend>
             <label for="idf">ID Produit</label>
-            <input type="text" id="nom" name="idp" value="<?php echo $next_id; ?>" class="form-control" disabled>
-            <input type="text" id="nom" name="idp" value="<?php echo $next_id; ?>" class="form-control" hidden>
+            <input type="text" id="nom" name="idproduit" value="<?php echo $next_id; ?>" class="form-control" disabled>
+            <input type="text" id="nom" name="idproduit" value="<?php echo $next_id; ?>" class="form-control" hidden>
 
             <label for="nom">ID Categorie</label>
             <select id="idc" name="idc" class="form-control" >
@@ -26,7 +26,7 @@ mysqli_close($con);
                 $res = mysqli_query($con, $r);
                 while ($data = mysqli_fetch_assoc($res)) {
                     echo "<option value=" . $data['idc'] . ">";
-                    echo $data['idc'] . " | " . $data['titreC'];
+                    echo $data['idc'] . " | " . $data['titrec'];
                 }
                 mysqli_close($con);
                 ?>

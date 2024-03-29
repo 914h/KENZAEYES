@@ -88,10 +88,10 @@ $nbr_cabinet = mysqli_num_rows($res);
             <?php
             while ($data = mysqli_fetch_assoc($res)) {
                 $photo= $data['logo'];
-                $id = $data['idc'];
+                $id = $data['idcabinet'];
                 echo "<tr>";
-                echo "<td>" . $data['idc'];
-                echo "<td>" . $data['nomc'];
+                echo "<td>" . $data['idcabinet'];
+                echo "<td>" . $data['nomcabinet'];
                 echo "<td>" . $data['adresse'];
                 echo "<td>" . $data['telephone'];
                 echo "<td>" . $data['email'];

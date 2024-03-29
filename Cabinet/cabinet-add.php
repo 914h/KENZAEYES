@@ -34,7 +34,7 @@
         // Perform database insertion
         $logo = $name;
         $r = "INSERT INTO cabinet
-            (nomc, adresse, telephone, email, siteweb, responsable, specialite, ville, pays, codepostal, logo)
+            (nomcabinet, adresse, telephone, email, siteweb, responsable, specialite, ville, pays, codepostal, logo)
             VALUES
             ('$nomc', '$adresse', '$telephone', '$email', '$siteweb', '$responsable', '$specialite', '$ville', 
             '$pays', '$codepostal', '$logo')";

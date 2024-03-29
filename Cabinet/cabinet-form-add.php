@@ -1,6 +1,6 @@
 <?php
 require("../head.php");
-$r = "SELECT MAX(idc) AS max_id FROM cabinet";
+$r = "SELECT MAX(idcabinet) AS max_id FROM cabinet";
 require("../connexion.php");
 $res = mysqli_query($con, $r);
 $data = mysqli_fetch_assoc($res);
@@ -16,8 +16,8 @@ mysqli_close($con);
             <div class="row">
                 <div class="col-md-6">
                     <label for="idf">ID Cabinet</label>
-                    <input type="text" id="nom" name="idc" value="<?php echo $next_id; ?>" class="form-control" disabled>
-                    <input type="text" id="nom" name="idc" value="<?php echo $next_id; ?>" class="form-control" hidden>
+                    <input type="text" id="nom" name="idcabinet" value="<?php echo $next_id; ?>" class="form-control" disabled>
+                    <input type="text" id="nom" name="idcabinet" value="<?php echo $next_id; ?>" class="form-control" hidden>
 
                     <label for="nom">Nom Cabinet</label>
                     <input type="text" id="nom" name="nomc" class="form-control">
