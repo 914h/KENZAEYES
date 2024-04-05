@@ -4,51 +4,42 @@
         <fieldset>
             <?php
             $id = $_GET['id'];
-            $r = "select * from rendezvous where idrendezvous = '" . $id . "'";
+            $r = "select * from commande where idcommande = '" . $id . "'";
             require ("../connexion.php");
             $res = mysqli_query($con, $r);
             $data = mysqli_fetch_assoc($res);
             mysqli_close($con);
             require ("../head.php");
             ?>
-            <legend>Formulaire Service</legend>
+            <legend>Formulaire commande</legend>
             <div class="row">
-                <label for="idf">ID rendezvous</label>
-                <input type="text" id="nom" name="idp" value="<?php echo $data['idrendezvous']; ?>" class="form-control"
+                <label for="idf">ID commande</label>
+                <input type="text" id="nom" name="idp" value="<?php echo $data['idcommande']; ?>" class="form-control"
                     disabled>
-                <input type="text" id="nom" name="idp" value="<?php echo $data['idrendezvous']; ?>" class="form-control" hidden>
+                <input type="text" id="nom" name="idp" value="<?php echo $data['idcommande']; ?>" class="form-control" hidden>
 
                 <div class="col-md-6">
-                    <label for="nom">ID Cabinet</label>
-                    <?php
-            $id = $_GET['id'];
-            $r = "select * from cabinet where idcabinet = '" . $id . "'";
-            require ("../connexion.php");
-            $res = mysqli_query($con, $r);
-            $data = mysqli_fetch_assoc($res);
-            mysqli_close($con);
-            require ("../head.php");
-            ?>
-                    <select id="idc" name="idc" class="form-control" onchange="afficher_infos_cabinet()">
+                    <label for="nom">ID produit</label>
+                    <select id="idc" name="idproduit" class="form-control" onchange="afficher_infos_cabinet()">
                         <option selected disabled>
-                        
-                            <?php  echo $data['idcabinet'] . " | " . $data['nomcabinet']; ?>
+                            <?php echo $data['idproduit']; ?>
                         </option>
                         <?php
                         require ("../connexion.php");
-                        $r = "select * from Cabinet";
+                        $r = "select * from produit";
                         $res = mysqli_query($con, $r);
                         while ($data = mysqli_fetch_assoc($res)) {
-                            echo "<option value=" . $data['idc'] . ">";
-                            echo $data['idcabinet'] . " | " . $data['nomcabinet'];
+                            echo "<option value=" . $data['idproduit'] . ">";
+                            echo $data['idproduit'] . " | " . $data['nomproduit'];
                         }
                         mysqli_close($con);
                         ?>
                     </select>
                     <div id="infos_cabinet"></div>
-                </div><?php
+                </div>
+                <?php
             $id = $_GET['id'];
-            $r = "select * from rendezvous where idrendezvous = '" . $id . "'";
+            $r = "select * from commande where idcommande = '" . $id . "'";
             require ("../connexion.php");
             $res = mysqli_query($con, $r);
             $data = mysqli_fetch_assoc($res);
@@ -57,19 +48,9 @@
             ?>
                 <div class="col-md-6">
                     <label for="nom">ID Client</label>
-                    <?php
-            $id = $_GET['id'];
-            $r = "select * from client where idl = '" . $id . "'";
-            require ("../connexion.php");
-            $res = mysqli_query($con, $r);
-            $data = mysqli_fetch_assoc($res);
-            mysqli_close($con);
-            require ("../head.php");
-            ?>
-                    <select id="idc" name="idc" class="form-control" onchange="afficher_infos_client()">
+                    <select id="idc" name="idclient" class="form-control" onchange="afficher_infos_client()">
                         <option selected disabled>
-                        
-                            <?php echo $data['idl']  . " | " . $data['nom'] . " " . $data['prenom']; ?>
+                            <?php echo $data['idclient']; ?>
                         </option>
                         <?php
                         require ("../connexion.php");
@@ -86,28 +67,21 @@
                 </div>
                 <?php
             $id = $_GET['id'];
-            $r = "select * from rendezvous where idrendezvous = '" . $id . "'";
-            require ("../connexion.php");
+            $r = "select * from commande where idcommande = '" . $id . "'";  
+                      require ("../connexion.php");
             $res = mysqli_query($con, $r);
             $data = mysqli_fetch_assoc($res);
             mysqli_close($con);
             require ("../head.php");
             ?>
                 <div class="col-md-6">
-                    <label>daterendezvous</label>
-                    <input type="date" name="daterendezvous" value="<?php echo $data['daterendezvous']; ?>"
+                    <label>date de commande</label>
+                    <input type="date" name="datecommande" value="<?php echo $data['datecommande']; ?>"
                         class="form-control">
-                   
-
-                    <label>notes</label>
-                    <input type="text" name="notes" value="<?php echo $data['notes']; ?>" class="form-control">
                 </div>
                 <div class="col-md-6">
-                <label>heurerendezvous</label>
-                    <input type="time" name="heurerendezvous" value="<?php echo $data['heurerendezvous']; ?>"
-                        class="form-control">
-                    <label>niveaudecredibilite</label>
-                    <input type="text" name="niveaudecredibilite" value="<?php echo $data['niveaudecredibilite']; ?>"
+                    <label>Status</label>
+                    <input type="text" name="statut" value="<?php echo $data['statut']; ?>"
                         class="form-control">
 
 

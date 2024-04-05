@@ -1,19 +1,15 @@
 <?php
 	extract($_POST);
-	$r = "UPDATE produit
-        SET idc = '$idc',
-            idf = '$idf',
-            nomproduit = '$nomproduit',
-            marque = '$marque',
+	$r = "UPDATE rendezvous
+        SET idclient = '$idc',
+            idcabinet = '$idf',
+            daterendezvous = '$daterendezvous',
+            heurerendezvous = '$heurerendezvous',
             notes = '$notes',
-            prixdachat = '$prixdachat',
-            tvaappliquee = '$tvaappliquee',
-            prixdevente = '$prixdevente',
-            qteenstock  = '$qteenstock ',
-            seuildalerte = '$seuildalerte'
-        WHERE idp = '" . $id . "'";
+            niveaudecredibilite = '$niveaudecredibilite',
+        WHERE idrendezvous = '" . $id . "'";
 	require("../connexion.php");
 	mysqli_query($con, $r);
 	require("../fonctions.php");
-	redirection("produit-list.php");
+	redirection("rendez-vous-list.php");
 ?>
