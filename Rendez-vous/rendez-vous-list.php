@@ -1,6 +1,6 @@
 <?php
 require("../connexion.php");
-$r = "select * from produit";
+$r = "select * from rendezvous";
 $res = mysqli_query($con, $r);
 $nbr_cabinet = mysqli_num_rows($res);
 
@@ -53,31 +53,27 @@ $nbr_cabinet = mysqli_num_rows($res);
     <main>
         <div class="container page" id="page" style="margin-top: 100px;">
             <div class="entete-list">
-                <h1 class="display-4">Liste des Produits</h1>
+                <h1 class="display-4">Liste des Rendez vous</h1>
                 <span class="nbr">
                     
                 </span>
             </div>
-            <a href="produit-form-add.php" class="btn btn-success ttip" data-bs-toggle="tooltip"
+            <a href="rendez-vous-form-add.php" class="btn btn-success ttip" data-bs-toggle="tooltip"
                 title="Ajouter une cabinet"><i class="fa-solid fa-plus"></i></a>
-            <a href="produit-print.php" class="btn btn-secondary" data-bs-toggle="tooltip"
+            <a href="rendez-vous-print.php" class="btn btn-secondary" data-bs-toggle="tooltip"
                 title="Imprimer tous les cabinets"><i class="fa-solid fa-print"></i></a>
             <br>
             <br>
             <table id="example" class="table  table-striped table-hover">
             <thead>
                 <tr>
-                <th>ID produit</th>
-                <th>ID categorie</th>
-                <th>ID fournisseur</th>
-                <th>nom produit</th>
-                <th>marque</th>  
+                <th>ID Rendez-vous</th>
+                <th>ID Client</th>
+                <th>ID Cabinet</th> 
+                <th>Date de rendezvous</th>
+                <th>Heure de Rendezvous</th> 
                 <th>notes</th>
-                <th>prixdachatht</th>
-                <th>tvaappliquee</th>
-                <th>prixdevente</th>
-                <th>qteenstock</th>
-                <th>seuildalerte</th>
+                <th>niveau de credibilite</th>
                 <th>Edit </th>
                     <th>Delete </th>
                     <th class="colm"></th>
@@ -86,21 +82,17 @@ $nbr_cabinet = mysqli_num_rows($res);
             <tbody>
             <?php
             while ($data = mysqli_fetch_assoc($res)) {
-                $id= $data['idproduit'];
+                $id= $data['idrendezvous'];
                 echo "<tr>";
-                echo "<td>" . $data['idproduit'];
-                echo "<td>" . $data['idc'];
-                echo "<td>" . $data['idf'];
-                echo "<td>" . $data['nomproduit'];
-                echo "<td>" . $data['marque'];
+                echo "<td>" . $data['idrendezvous'];
+                echo "<td>" . $data['idcabinet'];
+                echo "<td>" . $data['idrendezvous'];
+                echo "<td>" . $data['daterendezvous'];
+                echo "<td>" . $data['heurerendezvous'];
                 echo "<td>" . $data['notes'];
-                echo "<td>" . $data['prixdachat'];
-                echo "<td>" . $data['tvaappliquee'];
-                echo "<td>" . $data['prixdevente'];
-                echo "<td>" . $data['qteenstock'];
-                echo "<td>" . $data['seuildalerte'];
-                echo "<td> <a href=produit-form-update.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Modifier cette ligne'><i class='fa-solid fa-pencil'></i></a>";
-                echo "<td> <a href=produit-form-delete.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Supprimer cette ligne'><i class='fa-solid fa-trash-can iconrouge'></i></a>";
+                echo "<td>" . $data['niveaudecredibilite'];
+                echo "<td> <a href=rendez-vous-form-update.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Modifier cette ligne'><i class='fa-solid fa-pencil'></i></a>";
+                echo "<td> <a href=rendez-vous-form-delete.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Supprimer cette ligne'><i class='fa-solid fa-trash-can iconrouge'></i></a>";
 
             }
             mysqli_close($con);
@@ -111,5 +103,4 @@ $nbr_cabinet = mysqli_num_rows($res);
         </div>    
     </main>  
     </div>
-
 </body>

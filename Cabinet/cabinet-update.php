@@ -1,7 +1,7 @@
 <?php
 	extract($_POST);
 	$r = "update cabinet
-        set nom = '$nomc',
+        set nomcabinet = '$nomc',
         adresse = '$adresse',
         tel = '$telephone',
         email = '$email',
@@ -12,7 +12,7 @@
         pays = '$pays',
         codepostal = '$codepostal',
         logo = '$logo'
-        where idc = '$id'";
+        where idcabinet = '$id'";
 	require("../connexion.php");
 	mysqli_query($con, $r);
 	require("../fonctions.php");

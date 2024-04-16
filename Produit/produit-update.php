@@ -11,7 +11,7 @@
             prixdevente = '$prixdevente',
             qteenstock  = '$qteenstock ',
             seuildalerte = '$seuildalerte'
-        WHERE idp = '" . $id . "'";
+        WHERE idproduit = '" . $id . "'";
 	require("../connexion.php");
 	mysqli_query($con, $r);
 	require("../fonctions.php");

@@ -5,7 +5,7 @@
         <fieldset>
         <?php
                 $id=$_GET['id'];
-                $r = "select * from produit where idp = '" . $id . "'";
+                $r = "select * from produit where idproduit = '" . $id . "'";
                 require("../connexion.php");
                 $res = mysqli_query($con, $r);
                 $data = mysqli_fetch_assoc($res);
@@ -14,8 +14,8 @@
                 ?>
             <legend>Formulaire Service</legend>
             <label for="idf">ID Produit</label>
-            <input type="text" id="nom" name="idp" value="<?php echo $data['idp']; ?>" class="form-control" disabled>
-            <input type="text" id="nom" name="idp" value="<?php echo $data['idp']; ?>" class="form-control" hidden>
+            <input type="text" id="nom" name="idproduit" value="<?php echo $data['idproduit']; ?>" class="form-control" disabled>
+            <input type="text" id="nom" name="idproduit" value="<?php echo $data['idproduit']; ?>" class="form-control" hidden>
             
 
             <label for="nom">ID Categorie</label>
@@ -34,7 +34,7 @@
             </select>
             <?php
                 $id=$_GET['id'];
-                $r = "select * from produit where idp = '" . $id . "'";
+                $r = "select * from produit where idproduit = '" . $id . "'";
                 require("../connexion.php");
                 $res = mysqli_query($con, $r);
                 $data = mysqli_fetch_assoc($res);
@@ -58,7 +58,7 @@
             <div class="row">
             <?php
                 $id=$_GET['id'];
-                $r = "select * from produit where idp = '" . $id . "'";
+                $r = "select * from produit where idproduit = '" . $id . "'";
                 require("../connexion.php");
                 $res = mysqli_query($con, $r);
                 $data = mysqli_fetch_assoc($res);
@@ -67,8 +67,8 @@
                 ?>
                 <div class="col-md-6">
                     <label>Id produit</label>
-                    <input type="text" name="idp" value="<?php echo $data['idp']; ?>" class="form-control">
-                    <input type="text" name="id" value="<?php echo $data['idp']; ?>" hidden>
+                    <input type="text" name="idproduit" value="<?php echo $data['idproduit']; ?>" class="form-control">
+                    <input type="text" name="id" value="<?php echo $data['idproduit']; ?>" hidden>
 
                     <label>ID categorie</label>
                     <input type="text" name="idc" value="<?php echo $data['idc']; ?>" class="form-control">

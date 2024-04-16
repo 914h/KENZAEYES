@@ -1,6 +1,6 @@
 <?php
 $id = $_GET['id'];
-$r = "select * from cabinet where idc = '" . $id . "'";
+$r = "select * from cabinet where idcabinet = '" . $id . "'";
 require("../connexion.php");
 $res = mysqli_query($con, $r);
 $data = mysqli_fetch_assoc($res);
@@ -16,8 +16,8 @@ require("../head.php");
             <div class="row">
                 <div class="col-md-6">
                     <label>Id Cabinet</label>
-                    <input type="text" name="idservice" value="<?php echo $data['idc']; ?>" class="form-control">
-                    <input type="text" name="id" value="<?php echo $data['idc']; ?>" hidden>
+                    <input type="text" name="idservice" value="<?php echo $data['idcabinet']; ?>" class="form-control">
+                    <input type="text" name="id" value="<?php echo $data['idcabinet']; ?>" hidden>
 
                     <label>Nom Cabinet</label>
                     <input type="text" name="nom_fournisseur" value="<?php echo $data['nomc']; ?>" class="form-control">

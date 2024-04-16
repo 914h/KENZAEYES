@@ -1,6 +1,6 @@
 <?php
 $id = $_GET['id'];
-$r = "select * from produit where idp = '" . $id . "'";
+$r = "select * from produit where idproduit = '" . $id . "'";
 require("../connexion.php");
 $res = mysqli_query($con, $r);
 $data = mysqli_fetch_assoc($res);
@@ -14,8 +14,8 @@ require("../head.php");
 				<fieldset>
 					<legend>cabinet à supprimer</legend>
 					<label>ID Produit</label>
-                    <input type="text" name="idp" value="<?php echo $data['idp']; ?>" class="form-control" disabled>
-                    <input type="hidden" name="id" value="<?php echo $data['idp']; ?>">
+                    <input type="text" name="idproduit" value="<?php echo $data['idproduit']; ?>" class="form-control" disabled>
+                    <input type="hidden" name="id" value="<?php echo $data['idproduit']; ?>">
 
                     <label>ID Categorie</label>
                     <input type="text" name="idc" value="<?php echo $data['idc']; ?>" class="form-control" disabled>
@@ -78,7 +78,7 @@ if (isset($cledelete)) {
 		echo "<div class='alert alert-info' role='alert'><center>
         <h4><i class='fa-solid fa-triangle-exclamation'></i> Clé de suppression incorrecte...</h4></center></div>";
 	} else {
-		$r = "delete from produit where idp = '" . $id . "'";
+		$r = "delete from produit where idproduit = '" . $id . "'";
 		$re = "ALTER TABLE cabinet AUTO_INCREMENT = 0";
 		require("../connexion.php");
 		mysqli_query($con, $r);
