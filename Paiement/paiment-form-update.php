@@ -1,36 +1,38 @@
 <link rel="stylesheet" href="style.css">
 <div class="container" style="margin-top:100px">
-    <form method="POST" action="rendezvous-update.php">
+    <form method="POST" action="paiment-update.php">
         <fieldset>
             <?php
             $id = $_GET['id'];
-            $r = "select * from commande where idcommande = '" . $id . "'";
+            $r = "select * from paiement where idpaiement = '" . $id . "'";
             require ("../connexion.php");
             $res = mysqli_query($con, $r);
             $data = mysqli_fetch_assoc($res);
             mysqli_close($con);
             require ("../head.php");
             ?>
-            <legend>Formulaire commande</legend>
+            <legend>Formulaire paiement</legend>
             <div class="row">
-                <label for="idf">ID commande</label>
-                <input type="text" id="nom" name="idp" value="<?php echo $data['idcommande']; ?>" class="form-control"
+            <div class="col-md-6">
+                <label for="idf">ID paiement</label>
+                <input type="text" id="nom" name="idp" value="<?php echo $data['idpaiement']; ?>" class="form-control"
                     disabled>
-                <input type="text" id="nom" name="idp" value="<?php echo $data['idcommande']; ?>" class="form-control" hidden>
-
+                <input type="text" id="nom" name="idp" value="<?php echo $data['idpaiement']; ?>" class="form-control"
+                    hidden>
+            </div>
                 <div class="col-md-6">
-                    <label for="nom">ID produit</label>
+                    <label for="nom">ID Commande</label>
                     <select id="idc" name="idproduit" class="form-control" onchange="afficher_infos_cabinet()">
                         <option selected disabled>
-                            <?php echo $data['idproduit']; ?>
+                            <?php echo $data['idcommande']; ?>
                         </option>
                         <?php
                         require ("../connexion.php");
-                        $r = "select * from produit";
+                        $r = "select * from commande";
                         $res = mysqli_query($con, $r);
                         while ($data = mysqli_fetch_assoc($res)) {
-                            echo "<option value=" . $data['idproduit'] . ">";
-                            echo $data['idproduit'] . " | " . $data['nomproduit'];
+                            echo "<option value=" . $data['idcommande'] . ">";
+                            echo $data['idcommande'] . " | " . $data['statut'];
                         }
                         mysqli_close($con);
                         ?>
@@ -38,58 +40,31 @@
                     <div id="infos_cabinet"></div>
                 </div>
                 <?php
-            $id = $_GET['id'];
-            $r = "select * from commande where idcommande = '" . $id . "'";
-            require ("../connexion.php");
-            $res = mysqli_query($con, $r);
-            $data = mysqli_fetch_assoc($res);
-            mysqli_close($con);
-            require ("../head.php");
-            ?>
+                $id = $_GET['id'];
+                $r = "select * from paiement where idpaiement = '" . $id . "'";
+                require ("../connexion.php");
+                $res = mysqli_query($con, $r);
+                $data = mysqli_fetch_assoc($res);
+                mysqli_close($con);
+                require ("../head.php");
+                ?>
                 <div class="col-md-6">
-                    <label for="nom">ID Client</label>
-                    <select id="idc" name="idclient" class="form-control" onchange="afficher_infos_client()">
-                        <option selected disabled>
-                            <?php echo $data['idclient']; ?>
-                        </option>
-                        <?php
-                        require ("../connexion.php");
-                        $r = "select * from client";
-                        $res = mysqli_query($con, $r);
-                        while ($data = mysqli_fetch_assoc($res)) {
-                            echo "<option value=" . $data['idl'] . ">";
-                            echo $data['idl'] . " | Mr. " . $data['nom'] . " " . $data['prenom'];
-                        }
-                        mysqli_close($con);
-                        ?>
-                    </select>
-                    <div id="infos_client"></div>
-                </div>
-                <?php
-            $id = $_GET['id'];
-            $r = "select * from commande where idcommande = '" . $id . "'";  
-                      require ("../connexion.php");
-            $res = mysqli_query($con, $r);
-            $data = mysqli_fetch_assoc($res);
-            mysqli_close($con);
-            require ("../head.php");
-            ?>
-                <div class="col-md-6">
-                    <label>date de commande</label>
-                    <input type="date" name="datecommande" value="<?php echo $data['datecommande']; ?>"
+                    <label>date de paiement</label>
+                    <input type="date" name="datepaiement" value="<?php echo $data['datepaiement']; ?>"
                         class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label>Status</label>
-                    <input type="text" name="statut" value="<?php echo $data['statut']; ?>"
-                        class="form-control">
+                    <label>montantpaye</label>
+                    <input type="text" name="statut" value="<?php echo $data['montantpaye']; ?>" class="form-control">
 
 
-                    <button type="submit" class="btn btn-primary">
+                   
+                </div>
+                <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Enregistrer
                     </button>
-                </div>
             </div>
+            
 </div>
 </div>
 
@@ -144,11 +119,11 @@
                 var email = reponse.email;
 
                 var detailshtml = "ID Cabinet: <strong>" + idcabinet + "</strong><br>" +
-                                  "Nom Cabinet: <strong>" + nomcabinet + "</strong><br>" +
-                                  "Responsable: <strong>" + responsable + "</strong><br>" +
-                                  "Téléphone: <strong>" + telephone + "</strong><br>" +
-                                  "Email: <strong>" + email + "</strong><br>" +
-                                  "<img src='" + logo + "' alt='Logo' width='100'><br>";
+                    "Nom Cabinet: <strong>" + nomcabinet + "</strong><br>" +
+                    "Responsable: <strong>" + responsable + "</strong><br>" +
+                    "Téléphone: <strong>" + telephone + "</strong><br>" +
+                    "Email: <strong>" + email + "</strong><br>" +
+                    "<img src='" + logo + "' alt='Logo' width='100'><br>";
 
                 infos_cabinet.innerHTML = detailshtml;
             }

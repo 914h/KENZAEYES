@@ -1,6 +1,6 @@
 <?php
 require ("../head.php");
-$r = "SELECT MAX(idcommande) AS max_id FROM commande";
+$r = "SELECT MAX(idpaiement) AS max_id FROM paiement";
 require ("../connexion.php");
 $res = mysqli_query($con, $r);
 $data = mysqli_fetch_assoc($res);
@@ -12,23 +12,23 @@ mysqli_close($con);
 <div class="container" style="margin-top: 100px;">
     <form method="POST" action="commande-add.php" enctype="multipart/form-data">
         <fieldset>
-            <legend>Formulaire commande</legend>
-            <label for="idf">ID commande</label>
+            <legend>Formulaire paiement</legend>
+            <label for="idf">ID paiement</label>
             <input type="text" id="nom" name="idp" value="<?php echo $next_id; ?>" class="form-control" disabled>
             <input type="text" id="nom" name="idp" value="<?php echo $next_id; ?>" class="form-control" hidden>
 
             
             <div class="row">
             <div class="col-md-6">
-            <label for="nom">ID Client</label>
+            <label for="nom">ID commande</label>
             <select id="idclient" name="idclient" class="form-control" onchange="afficher_infos_client()">
-                <option selected disabled>Sélectionnez un Client</option>
+                <option selected disabled>Sélectionnez un Commande</option>
                 <?php
                 require ("../connexion.php");
-                $r = "select * from Client";
+                $r = "select * from commande";
                 $res = mysqli_query($con, $r);
                 while ($data = mysqli_fetch_assoc($res)) {
-                    echo "<option value=" . $data['idl'] . ">";
+                    echo "<option value=" . $data['idcommande'] . ">";
                     echo $data['idl'] . " | Mr. " . $data['nom'] . " " . $data['prenom'];
                 }
                 mysqli_close($con);
@@ -38,21 +38,9 @@ mysqli_close($con);
             
             </div>
             <div class="col-md-6">
-            <label for="contact">ID produit</label>
+            <label for="contact">datepaiement</label>
             <select id="idcabinet" name="idcabinet" class="form-control" onchange="afficher_infos_cabinet()">
-                <option selected disabled>Sélectionnez un Cabinet</option>
-                <?php
-                require ("../connexion.php");
-                $r = "select * from produit";
-                $res = mysqli_query($con, $r);
-                while ($data = mysqli_fetch_assoc($res)) {
-                    echo "<option value=" . $data['idproduit'] . ">";
-                    echo $data['idproduit'] . " | " . $data['nomproduit'];
-                }
-                mysqli_close($con);
-                ?>
-            </select>
-            <div id="infos_cabinet"></div>
+                
             </div>
                 <div class="col-md-6">
                     <label for="tel">Date de commande</label>

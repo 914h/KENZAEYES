@@ -15,6 +15,7 @@
 
 body{    
     font-family: "Rubik", sans-serif;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,17 +28,9 @@ body{
 .sidebar {
     width: 15%;
     height: 100vh;
-    background-color: #ffffffab;
+    background-color: #ffffff6a;
     transition: all .5s ease;
-    border-radius: 1rem;
-    left: 0;
-    box-shadow:
-        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.006),
-        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.008),
-        12.5px 12.5px 10px rgba(0, 0, 0, 0.01),
-        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.012),
-        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.014),
-        100px 100px 80px rgba(0, 0, 0, 0.02);
+    left: 0; /* Modified to make the sidebar initially visible */
 }
 
 .sidebar header{
@@ -148,9 +141,12 @@ p {
     margin: 0;
 }
 main{
+    width: 85%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+table{
+    padding: 50px;
+}

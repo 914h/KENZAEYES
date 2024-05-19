@@ -1,13 +1,10 @@
 <link rel="stylesheet" href="style.css">
-<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <div class="container" style="margin-top:100px">
     <form method="POST" action="rendezvous-update.php">
         <fieldset>
             <?php
             $id = $_GET['id'];
-            $r = "select * from commande where idcommande = '" . $id . "'";
+            $r = "select * from facture where idfacture = '" . $id . "'";
             require ("../connexion.php");
             $res = mysqli_query($con, $r);
             $data = mysqli_fetch_assoc($res);
@@ -16,28 +13,13 @@
             ?>
             <legend>Formulaire commande</legend>
             <div class="row">
-                <label for="idf">ID commande</label>
-                <input type="text" id="nom" name="idp" value="<?php echo $data['idcommande']; ?>" class="form-control"
+                <label for="idf">ID Facture</label>
+                <input type="text" id="nom" name="idp" value="<?php echo $data['idfacture']; ?>" class="form-control"
                     disabled>
-                <input type="text" id="nom" name="idp" value="<?php echo $data['idcommande']; ?>" class="form-control" hidden>
+                <input type="text" id="nom" name="idp" value="<?php echo $data['idfacture']; ?>" class="form-control" hidden>
 
                 <div class="col-md-6">
-                    <label for="nom">ID produit</label>
-                    <select id="idc" name="idproduit" class="form-control" onchange="afficher_infos_cabinet()">
-                        <option selected disabled>
-                            <?php echo $data['idproduit']; ?>
-                        </option>
-                        <?php
-                        require ("../connexion.php");
-                        $r = "select * from produit";
-                        $res = mysqli_query($con, $r);
-                        while ($data = mysqli_fetch_assoc($res)) {
-                            echo "<option value=" . $data['idproduit'] . ">";
-                            echo $data['idproduit'] . " | " . $data['nomproduit'];
-                        }
-                        mysqli_close($con);
-                        ?>
-                    </select>
+                
                     <div id="infos_cabinet"></div>
                 </div>
                 <?php
@@ -53,7 +35,7 @@
                     <label for="nom">ID Client</label>
                     <select id="idc" name="idclient" class="form-control" onchange="afficher_infos_client()">
                         <option selected disabled>
-                            <?php echo $data['idclient']; ?>
+                            <?php echo $data['idl']; ?>
                         </option>
                         <?php
                         require ("../connexion.php");
@@ -78,17 +60,39 @@
             require ("../head.php");
             ?>
                 <div class="col-md-6">
-                    <label>date de commande</label>
-                    <input type="date" name="datecommande" value="<?php echo $data['datecommande']; ?>"
+                    <label>date de facture</label>
+                    <input type="date" name="datecommande" value="<?php echo $data['datefacture']; ?>"
                         class="form-control">
                 </div>
+                <label>Total ht</label>
+                    <input type="date" name="datecommande" value="<?php echo $data['totalht']; ?>"
+                        class="form-control">
+                </div>
+                <label>Total TVA</label>
+                    <input type="date" name="datecommande" value="<?php echo $data['totaltva']; ?>"
+                        class="form-control">
+                </div>
+                <label>Total TTC</label>
+                    <input type="date" name="datecommande" value="<?php echo $data['totalttc']; ?>"
+                        class="form-control">
+                </div>
+                <label>Statut</label>
+                    <input type="date" name="datecommande" value="<?php echo $data['statut']; ?>"
+                        class="form-control">
+                </div>
+
                 <div class="col-md-6">
-                <label>Status</label>
-<select class="form-control" name="statut">
-    <option value="en cours" <?php if ($data['statut'] == 'en cours') echo 'selected'; ?>>en cours</option>
-    <option value="en attente" <?php if ($data['statut'] == 'en attente') echo 'selected'; ?>>en attente</option>
-    <option value="livree" <?php if ($data['statut'] !==  'en cours' && 'en attente' ) echo 'selected'; ?>>livree</option>
-</select>
+                    <label>datepaiement</label>
+                    <input type="text" name="statut" value="<?php echo $data['datepaiement']; ?>"
+                        class="form-control">
+                        <label>modepaiement	</label>
+                    <input type="text" name="statut" value="<?php echo $data['modepaiement']; ?>"
+                        class="form-control">
+                        <label>notes</label>
+                    <input type="text" name="statut" value="<?php echo $data['notes']; ?>"
+                        class="form-control">
+
+
 
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Enregistrer
