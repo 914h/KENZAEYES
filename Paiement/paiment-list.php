@@ -1,6 +1,6 @@
 <?php
 require("../connexion.php");
-$r = "select * from commande";
+$r = "select * from paiement";
 $res = mysqli_query($con, $r);
 $nbr_cabinet = mysqli_num_rows($res);
 
@@ -19,59 +19,126 @@ $nbr_cabinet = mysqli_num_rows($res);
 </head>
 <body>
 <div class="main">
-      <div class="sidebar">
-        <header><img src="images/png.png" width="220px" alt=""></header>
-        <a href="#" class="active">
-            <i class="fas fa-qrcode"></i>
-            <span>Dashboard</span>
+<div class="sidebar">
+      <header>
+        <img src="images/png.png" width="220px" alt="">
+      </header>
+
+      <a href="#" class="active">
+        <i class="fas fa-qrcode"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <div class="dropdown">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-cart-shopping"></i>
+          <span>Achat</span></a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="fournisseur/fournisseur-list.php">Fournisseur</a></li>
+          <li><a class="dropdown-item" href="categorie/categorie-list.php">Catégorie</a></li>
+          <li><a class="dropdown-item" href="Produit/Produit-list.php">Produit</a></li>
+        </ul>
+      </div>
+      <div class="dropdown">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-users"></i>
+          <span>Client</span>
         </a>
-        <a href="#">
-            <i class="fas fa-link"></i>
-            <span>Shortcuts</span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Nouveau</a></li>
+          <li><a class="dropdown-item" href="rendez-vous/rendez-vous-list.php">Rendez-vous</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-store"></i>
+          <span>Vente</span></a>
         </a>
-        <a href="#">
-            <i class="fas fa-stream"></i>
-            <span>Overview</span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="Commande/Commande-list,php">Commande</a></li>
+          <li><a class="dropdown-item" href="paiement/paiement-list.php">Paiement</a></li>
+          <li><a class="dropdown-item" href="facture/facture-list.php">Facturation</a></li>
+          <li><a class="dropdown-item" href="#">Remboursement</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <a href="Fournisseur/Fournisseur-list.php" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fas fa-users-gear"></i>
+          <span>RH</span>
         </a>
-        <a href="#">
-            <i class="fas fa-calendar"></i>
-            <span>Events</span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Gestion des employés</a></li>
+          <li><a class="dropdown-item" href="#">Le Pointage</a></li>
+          <li><a class="dropdown-item" href="#">La paie</a></li>
+          <li><a class="dropdown-item" href="#">Gestion des congés</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <a href="Produit/Produit-list.php" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="far fa-flag"></i>
+          <span>Rapport</span>
         </a>
-        <a href="#">
-            <i class="far fa-question-circle"></i>
-            <span>About</span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Stock</a></li>
+          <li><a class="dropdown-item" href="#">Ventes</a></li>
+          <li><a class="dropdown-item" href="client/client-list.php">Clients</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gear"></i>
+          <span>Paramètres</span>
         </a>
-        <a href="#">
-            <i class="fas fa-sliders-h"></i>
-            <span>Services</span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Profil cabinet</a></li>
+          <li><a class="dropdown-item" href="#">Gestion des utilisateurs</a></li>
+          <li><a class="dropdown-item" href="#">Configuration de l’application</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Aide</span>
         </a>
-        <a href="#">
-            <i class="far fa-envelope"></i>
-            <span>Contact</span>
-        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Contacter le support</a></li>
+          <li><a class="dropdown-item" href="#">Afficher la formation</a></li>
+        </ul>
+      </div>
+
+      <a href="#">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Déconnexion</span>
+      </a>
     </div>
     <main>
         <div class="container page" id="page" style="margin-top: 100px;">
             <div class="entete-list">
-                <h1 class="display-4">Liste des Commandes</h1>
+                <h1 class="display-4">Liste des Paiement</h1>
                 <span class="nbr">
                     
                 </span>
             </div>
-            <a href="commande-form-add.php" class="btn btn-success ttip" data-bs-toggle="tooltip"
+            <a href="paiment-form-add.php" class="btn btn-success ttip" data-bs-toggle="tooltip"
                 title="Ajouter une cabinet"><i class="fa-solid fa-plus"></i></a>
-            <a href="commande-print.php" class="btn btn-secondary" data-bs-toggle="tooltip"
+            <a href="paiment3-print.php" class="btn btn-secondary" data-bs-toggle="tooltip"
                 title="Imprimer tous les cabinets"><i class="fa-solid fa-print"></i></a>
             <br>
             <br>
             <table id="example" class="table  table-striped table-hover">
             <thead>
                 <tr>
-                <th>ID Commande</th>
-                <th>Date de commande</th>
-                <th>ID Client</th> 
-                <th>ID Produit</th>
-                <th>Statut</th>
+                <th>ID Paiement</th>
+                <th>Id Commande</th>
+                <th>Date de paiement</th> 
+                <th>Montant a pay</th>
                 <th>Edit </th>
                     <th>Delete </th>
                     <th class="colm"></th>
@@ -80,15 +147,14 @@ $nbr_cabinet = mysqli_num_rows($res);
             <tbody>
             <?php
             while ($data = mysqli_fetch_assoc($res)) {
-                $id= $data['idcommande'];
+                $id= $data['idpaiement'];
                 echo "<tr>";
+                echo "<td>" . $data['idpaiement'];
                 echo "<td>" . $data['idcommande'];
-                echo "<td>" . $data['datecommande'];
-                echo "<td>" . $data['idclient'];
-                echo "<td>" . $data['idproduit'];
-                echo "<td>" . $data['statut'];
-                echo "<td> <a href=commande-form-update.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Modifier cette ligne'><i class='fa-solid fa-pencil'></i></a>";
-                echo "<td> <a href=commande-form-delete.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Supprimer cette ligne'><i class='fa-solid fa-trash-can iconrouge'></i></a>";
+                echo "<td>" . $data['datepaiement'];
+                echo "<td>" . $data['montantpaye'];
+                echo "<td> <a href=paiment-form-update.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Modifier cette ligne'><i class='fa-solid fa-pencil'></i></a>";
+                echo "<td> <a href=paiment-form-delete.php?id=".urlencode($id)." data-bs-toggle='tooltip' title='Supprimer cette ligne'><i class='fa-solid fa-trash-can iconrouge'></i></a>";
 
             }
             mysqli_close($con);

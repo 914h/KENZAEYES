@@ -63,13 +63,7 @@ mysqli_close($con);
                 </div>
                 <div class="col-md-6">
                 <label for="adresse">Status</label>
-                <label>Status</label>
-<select class="form-control" name="statut" id="notes" name="notes" value"">
-    <option value="en cours">en cours</option>
-    <option value="en attente">en attente</option>
-    <option value="livree" >livree</option>
-</select>
-                    
+                    <input type="text" id="notes" name="notes" class="form-control">
                 </div>
                 <br><button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Enregistrer
