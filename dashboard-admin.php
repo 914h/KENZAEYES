@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['v_session']) && $_SESSION['v_session'] == 1) {
+} else {
+  header("Location: auth.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,22 +27,24 @@
 </head>
 
 <body>
+
   <div class="main">
 
     <div class="sidebar">
       <header>
         <img src="images/png.png" width="220px" alt="">
       </header>
-
-      <a href="#" class="active">
-        <i class="fas fa-qrcode"></i>
-        <span>Dashboard</span>
-      </a>
-
+      <div class="dropdown">
+        <a href="#" class="active">
+          <i class="fas fa-qrcode"></i>
+          <span>Dashboard</span>
+        </a>
+      </div>
       <div class="dropdown">
         <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fas fa-cart-shopping"></i>
-          <span>Achat</span></a>
+          <span>Achat </span> <i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i></a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="fournisseur/fournisseur-list.php">Fournisseur</a></li>
           <li><a class="dropdown-item" href="categorie/categorie-list.php">Catégorie</a></li>
@@ -44,7 +54,8 @@
       <div class="dropdown">
         <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fas fa-users"></i>
-          <span>Client</span>
+          <span>Client</span><i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="#">Nouveau</a></li>
@@ -55,7 +66,8 @@
       <div class="dropdown">
         <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fas fa-store"></i>
-          <span>Vente</span></a>
+          <span>Vente</span><i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i></a>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="Commande/commande-list.php">Commande</a></li>
@@ -69,7 +81,8 @@
         <a href="Fournisseur/Fournisseur-list.php" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
           aria-expanded="false">
           <i class="fas fa-users-gear"></i>
-          <span>RH</span>
+          <span>RH</span><i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="#">Gestion des employés</a></li>
@@ -83,7 +96,8 @@
         <a href="Produit/Produit-list.php" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
           aria-expanded="false">
           <i class="far fa-flag"></i>
-          <span>Rapport</span>
+          <span>Rapport</span><i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="#">Stock</a></li>
@@ -95,7 +109,8 @@
       <div class="dropdown">
         <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-gear"></i>
-          <span>Paramètres</span>
+          <span>Paramètres</span><i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="#">Profil cabinet</a></li>
@@ -107,7 +122,8 @@
       <div class="dropdown">
         <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-circle-info"></i>
-          <span>Aide</span>
+          <span>Aide</span><i class="fa-solid fa-sort-down"
+            style="float: right; margin-top: 15px; margin-left: -10px;"></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" href="#">Contacter le support</a></li>
